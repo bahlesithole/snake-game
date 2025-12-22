@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e91e63 0%, #f48fb1 100%);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+h1 {
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    font-size: 2.5em;
+    animation: titleBounce 2s ease-in-out infinite;
+}
+
+@keyframes titleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#gameContainer {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+canvas {
+    border: 4px solid rgba(255,255,255,0.8);
+    border-radius: 12px;
+    background: #5a8f3f;
+    display: block;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6),
+                inset 0 0 50px rgba(0,0,0,0.2);
+    image-rendering: pixelated;
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+#score, #highScore {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    background: rgba(255,255,255,0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    flex: 1;
+}
+
+#highScore {
+    color: #ffd700;
+}
+
+#gameOver {
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#gameOver h2 {
+    color: #4d9fff;
+    margin: 10px 0;
+    font-size: 2em;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+button {
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    color: #e91e63;
+    border: none;
+    padding: 15px 40px;
+    font-size: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.controls {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.9;
+    background: rgba(0,0,0,0.2);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+/* Particle effects */
+@keyframes particle-float {
+    0% { transform: translateY(0) translateX(0); opacity: 1; }
+    100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ffd700;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particle-float 1s ease-out forwards;
+}
